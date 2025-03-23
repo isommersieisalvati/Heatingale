@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     MapContainer,
     TileLayer,
@@ -36,24 +36,28 @@ const CanadianElection = () => {
         if (
             electionResult === "Liberal"
         ) {
-            fillColor = "red"; // Party A color
+            fillColor = "#ff5765"; // Party A color
         } else if (
             electionResult ===
             "Conservative"
         ) {
-            fillColor = "blue"; // Party B color
+            fillColor = "#8a6fdf"; // Party B color
         } else if (
             electionResult ===
             "New Democratic Party"
         ) {
-            fillColor = "green"; // Party C color
+            fillColor = "#feb06a"; // Party C color
         } else if (
             electionResult ===
             "Bloc Québécois"
         ) {
-            fillColor = "yellow"; // Party D color
+            fillColor = "#36d6e7";
+        } else if (
+            electionResult === "Others"
+        ) {
+            fillColor = "#fb8da0";
         } else {
-            fillColor = "gray"; // Default color if no match
+            fillColor = "gray";
         }
 
         return {
@@ -62,6 +66,90 @@ const CanadianElection = () => {
             fillColor,
             fillOpacity: 0.6,
         };
+    };
+
+    const [
+        districtData,
+        setDistrictData,
+    ] = useState(null);
+
+    // Function to display the election results when hovering over a district
+    const onEachFeature = (
+        feature,
+        layer
+    ) => {
+        const electionResult =
+            getElectionResult(
+                feature.properties
+                    .fed_code
+            );
+        layer.on({
+            mouseover: () => {
+                setDistrictData({
+                    name: electionResult[
+                        "Electoral District Name"
+                    ],
+                    liberalVotes:
+                        electionResult[
+                            "Liberal Votes"
+                        ],
+                    conservativeVotes:
+                        electionResult[
+                            "Conservative Votes"
+                        ],
+                    ndpVotes:
+                        electionResult[
+                            "New Democratic Party Votes"
+                        ],
+                    blocVotes:
+                        electionResult[
+                            "Bloc Québécois Votes"
+                        ],
+                    othersVotes:
+                        electionResult[
+                            "Others Votes"
+                        ],
+                });
+                layer
+                    .bindPopup(
+                        `
+      <strong>District:</strong> ${
+          electionResult[
+              "Electoral District Name"
+          ]
+      }<br>
+      <strong>Liberal Votes:</strong> ${
+          electionResult[
+              "Liberal Votes"
+          ]
+      }<br>
+      <strong>Conservative Votes:</strong> ${
+          electionResult[
+              "Conservative Votes"
+          ]
+      }<br>
+      <strong>NDP Votes:</strong> ${
+          electionResult[
+              "New Democratic Party Votes"
+          ]
+      }<br>
+      <strong>Bloc Québécois Votes:</strong> ${
+          electionResult[
+              "Bloc Québécois Votes"
+          ] || "N/A"
+      }<br>
+      <strong>Others Votes:</strong> ${
+          electionResult["Others Votes"]
+      }
+      `
+                    )
+                    .openTooltip();
+            },
+            mouseout: () => {
+                // Hide the tooltip when the mouse leaves the district
+                layer.closeTooltip();
+            },
+        });
     };
 
     return (
@@ -83,6 +171,9 @@ const CanadianElection = () => {
                 <GeoJSON
                     data={districts}
                     style={style}
+                    onEachFeature={
+                        onEachFeature
+                    }
                 />
             </MapContainer>
             ;
