@@ -4,8 +4,8 @@ import {
     TileLayer,
     GeoJSON,
 } from "react-leaflet";
-import districts from "../assets/districts.json";
-import results from "../assets/election_result.json";
+import districts from "../assets/canadianelection/districts.json";
+import results from "../assets/canadianelection/election_result.json";
 import "leaflet/dist/leaflet.css";
 
 const CanadianElection = () => {
@@ -68,12 +68,6 @@ const CanadianElection = () => {
         };
     };
 
-    const [
-        districtData,
-        setDistrictData,
-    ] = useState(null);
-
-    // Function to display the election results when hovering over a district
     const onEachFeature = (
         feature,
         layer
@@ -85,31 +79,6 @@ const CanadianElection = () => {
             );
         layer.on({
             mouseover: () => {
-                setDistrictData({
-                    name: electionResult[
-                        "Electoral District Name"
-                    ],
-                    liberalVotes:
-                        electionResult[
-                            "Liberal Votes"
-                        ],
-                    conservativeVotes:
-                        electionResult[
-                            "Conservative Votes"
-                        ],
-                    ndpVotes:
-                        electionResult[
-                            "New Democratic Party Votes"
-                        ],
-                    blocVotes:
-                        electionResult[
-                            "Bloc Québécois Votes"
-                        ],
-                    othersVotes:
-                        electionResult[
-                            "Others Votes"
-                        ],
-                });
                 layer
                     .bindPopup(
                         `
@@ -117,7 +86,11 @@ const CanadianElection = () => {
           electionResult[
               "Electoral District Name"
           ]
-      }<br>
+      }, ${
+                            electionResult[
+                                "Province"
+                            ]
+                        }<br>
       <strong>Liberal Votes:</strong> ${
           electionResult[
               "Liberal Votes"
