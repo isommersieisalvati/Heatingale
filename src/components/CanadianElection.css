@@ -1,0 +1,14 @@
+.infobox {
+    font-size: 10px; /* Adjust font size as needed */
+    padding: 1px; /* Optional: add some padding */
+    margin: 1px;
+}
+
+th {
+    color: #00008b;
+}
+
+.party {
+    font-style: italic;
+    font-weight: bold;
+}

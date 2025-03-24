@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     MapContainer,
     TileLayer,
@@ -7,6 +7,7 @@ import {
 import districts from "../assets/canadianelection/districts.json";
 import results from "../assets/canadianelection/election_result.json";
 import "leaflet/dist/leaflet.css";
+import "./CanadianElection.css";
 
 const CanadianElection = () => {
     const getElectionResult = (
@@ -77,50 +78,61 @@ const CanadianElection = () => {
                 feature.properties
                     .fed_code
             );
+
+        const infobox = `
+    <div class="infobox">
+      <h3>${electionResult["Electoral District Name"]}, ${electionResult["Province"]}</h3>
+      <table>
+        <tr>
+          <th>Party</th>
+          <th>Votes</th>
+          <th>Percentage</th>
+        </tr>
+        <tr>
+          <td class="party">Liberal</td>
+          <td>${electionResult["Liberal Votes"]}</td>
+          <td>${electionResult["Liberal Votes Percentage"]}%</td>
+        </tr>
+        <tr>
+          <td class="party">Conservative</td>
+          <td>${electionResult["Conservative Votes"]}</td>
+          <td>${electionResult["Conservative Votes Percentage"]}%</td>
+        </tr>
+        <tr>
+          <td class="party">NDP</td>
+          <td>${electionResult["New Democratic Party Votes"]}</td>
+          <td>${electionResult["New Democratic Party Votes Percentage"]}%</td>
+        </tr>
+        <tr>
+          <td class="party">Bloc Québécois</td>
+          <td>${electionResult["Bloc Québécois Votes"]}</td>
+          <td>${electionResult["Bloc Québécois Votes Percentage"]}%</td>
+        </tr>
+        <tr>
+          <td class="party">Others</td>
+          <td>${electionResult["Others Votes"]}</td>
+          <td>${electionResult["Others Votes Percentage"]}%</td>
+        </tr>
+      </table>
+    </div>
+  `;
+
+        layer.bindPopup(infobox, {
+            maxWidth: 200,
+            maxHeight: 200,
+        });
         layer.on({
-            mouseover: () => {
-                layer
-                    .bindPopup(
-                        `
-      <strong>District:</strong> ${
-          electionResult[
-              "Electoral District Name"
-          ]
-      }, ${
-                            electionResult[
-                                "Province"
-                            ]
-                        }<br>
-      <strong>Liberal Votes:</strong> ${
-          electionResult[
-              "Liberal Votes"
-          ]
-      }<br>
-      <strong>Conservative Votes:</strong> ${
-          electionResult[
-              "Conservative Votes"
-          ]
-      }<br>
-      <strong>NDP Votes:</strong> ${
-          electionResult[
-              "New Democratic Party Votes"
-          ]
-      }<br>
-      <strong>Bloc Québécois Votes:</strong> ${
-          electionResult[
-              "Bloc Québécois Votes"
-          ] || "N/A"
-      }<br>
-      <strong>Others Votes:</strong> ${
-          electionResult["Others Votes"]
-      }
-      `
-                    )
-                    .openTooltip();
-            },
-            mouseout: () => {
-                // Hide the tooltip when the mouse leaves the district
-                layer.closeTooltip();
+            mouseover: (event) => {
+                layer = event.target;
+                const latLng =
+                    event.latlng;
+
+                layer.setLatLng([
+                    latLng.lat - 0.001,
+                    latLng.lng,
+                ]);
+
+                layer.openPopup();
             },
         });
     };
