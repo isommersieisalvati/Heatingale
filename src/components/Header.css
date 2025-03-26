@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Merriweather&display=swap");
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+header {
+    display: flex; /* Aligns the column and row */
+    justify-content: flex-start; /* Aligns the column and row at the start */
+    align-items: center; /* Aligns the items at the top */
+    gap: 200px; /* Adds space between the column and the row */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px
+        rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header stays above other components */
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.heatingale-title {
+    color: inherit; /* Inherits the color from the parent element */
+    text-decoration: none; /* Removes the underline */
+    font-family: "Great Vibes", cursive;
+    font-size: 2.5rem; /* Smaller font for the title */
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+
+.heatingale-summary {
+    font-family: serif;
+    font-style: italic;
+    font-size: 0.9rem; /* Smaller font for the subtitle */
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    margin-top: 10px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 100px;
+}
+
+.nav-item {
+    font-family: serif;
+    position: relative;
+    font-size: 1.2rem; /* Slightly smaller font for nav items */
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgba(
+        255,
+        255,
+        255,
+        1
+    );
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    width: 150px;
+    z-index: 1001; /* Make sure dropdown stays above other elements */
+    box-shadow: 0 4px 8px
+        rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+    font-size: 1rem;
+    padding: 5px 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.dropdown-item:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+}
+
+body {
+    padding-top: 10px; /* Adjust this value based on header height */
+}
