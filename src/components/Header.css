@@ -11,10 +11,12 @@ header {
     align-items: center; /* Aligns the items at the top */
     gap: 200px; /* Adds space between the column and the row */
     padding: 10px 20px;
+    background-color: white;
     box-shadow: 0 4px 6px
         rgba(0, 0, 0, 0.1);
     text-align: center;
     position: fixed;
+    margin-bottom: 10px;
     top: 0;
     left: 0;
     width: 100%;
@@ -41,7 +43,8 @@ header {
 .heatingale-summary {
     font-family: serif;
     font-style: italic;
-    font-size: 0.9rem; /* Smaller font for the subtitle */
+    font-size: 0.9rem;
+    margin-bottom: 0;
 }
 
 .nav {
@@ -114,5 +117,5 @@ header {
 }
 
 body {
-    padding-top: 10px; /* Adjust this value based on header height */
+    margin-top: 100px;
 }

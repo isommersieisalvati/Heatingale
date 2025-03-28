@@ -48,16 +48,16 @@ const Header = () => {
                             "nav1" && (
                             <ul className="dropdown">
                                 <li className="dropdown-item">
-                                    <Link to="/canadian_politics">
+                                    <a href="/canadian_politics">
                                         Federal
                                         Elections
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="dropdown-item">
-                                    <Link to="/canadian_politics">
+                                    <a href="/canadian_politics">
                                         BC
                                         Elections
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         )}
@@ -78,11 +78,11 @@ const Header = () => {
                             "nav2" && (
                             <ul className="dropdown">
                                 <li className="dropdown-item">
-                                    <Link to="/fandom">
+                                    <a href="/fandom">
                                         Race
                                         Bar
                                         Chart
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         )}

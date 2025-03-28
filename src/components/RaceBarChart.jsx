@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import "./RaceBarChart.css";
 
 const RaceBarChart = () => {
     const charts = [
@@ -35,11 +35,14 @@ const RaceBarChart = () => {
     };
 
     return (
-        <div>
-            <div>Racebarchart</div>
-            <div>
+        <div className="racebarchart">
+            <div className="racebarchart-title">
+                Race Bar Chart
+            </div>
+            <div className="racebarchart-tabs">
                 {charts.map((tab) => (
                     <div
+                        className="racebarchart-tab"
                         key={tab.id}
                         id={tab.id}
                         onClick={() => {
@@ -54,9 +57,6 @@ const RaceBarChart = () => {
                         {tab.title}
                     </div>
                 ))}
-                {
-                    selectedChart.visualizationId
-                }
             </div>
             {charts.map((chart) => {
                 if (
