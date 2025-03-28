@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     MapContainer,
     TileLayer,
@@ -8,8 +8,12 @@ import districts from "../assets/canadianelection/districts.json";
 import results from "../assets/canadianelection/election_result.json";
 import "leaflet/dist/leaflet.css";
 import "./CanadianElection.css";
+import InfoBox from "./InfoBox";
 
 const CanadianElection = () => {
+    const [infobox, setInfobox] =
+        useState(null);
+
     const getElectionResult = (
         fedCode
     ) => {
@@ -73,72 +77,28 @@ const CanadianElection = () => {
         feature,
         layer
     ) => {
-        const electionResult =
-            getElectionResult(
-                feature.properties
-                    .fed_code
-            );
-
-        const infobox = `
-    <div class="infobox">
-      <h3>${electionResult["Electoral District Name"]}, ${electionResult["Province"]}</h3>
-      <table>
-        <tr>
-          <th>Party</th>
-          <th>Votes</th>
-          <th>Percentage</th>
-        </tr>
-        <tr>
-          <td class="party">Liberal</td>
-          <td>${electionResult["Liberal Votes"]}</td>
-          <td>${electionResult["Liberal Votes Percentage"]}%</td>
-        </tr>
-        <tr>
-          <td class="party">Conservative</td>
-          <td>${electionResult["Conservative Votes"]}</td>
-          <td>${electionResult["Conservative Votes Percentage"]}%</td>
-        </tr>
-        <tr>
-          <td class="party">NDP</td>
-          <td>${electionResult["New Democratic Party Votes"]}</td>
-          <td>${electionResult["New Democratic Party Votes Percentage"]}%</td>
-        </tr>
-        <tr>
-          <td class="party">Bloc Québécois</td>
-          <td>${electionResult["Bloc Québécois Votes"]}</td>
-          <td>${electionResult["Bloc Québécois Votes Percentage"]}%</td>
-        </tr>
-        <tr>
-          <td class="party">Others</td>
-          <td>${electionResult["Others Votes"]}</td>
-          <td>${electionResult["Others Votes Percentage"]}%</td>
-        </tr>
-      </table>
-    </div>
-  `;
-
-        layer.bindPopup(infobox, {
-            maxWidth: 200,
-            maxHeight: 200,
-        });
         layer.on({
-            mouseover: (event) => {
-                layer = event.target;
-                const latLng =
-                    event.latlng;
-
-                layer.setLatLng([
-                    latLng.lat - 0.001,
-                    latLng.lng,
-                ]);
-
-                layer.openPopup();
+            mouseover: (e) => {
+                setInfobox(
+                    getElectionResult(
+                        feature
+                            .properties
+                            .fed_code
+                    )
+                );
+            },
+            mouseout: (e) => {
+                setInfobox(null);
             },
         });
     };
 
     return (
         <>
+            <h2>
+                2021 Canadian Federal
+                Election
+            </h2>
             <MapContainer
                 center={[
                     56.1304, -106.3468,
@@ -149,6 +109,9 @@ const CanadianElection = () => {
                     width: "700px",
                 }}
             >
+                <InfoBox
+                    feature={infobox}
+                />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -161,7 +124,6 @@ const CanadianElection = () => {
                     }
                 />
             </MapContainer>
-            ;
         </>
     );
 };
