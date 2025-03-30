@@ -5,6 +5,13 @@ import "./InfoBox.css";
 
 const InfoControl = ({ feature }) => {
     const map = useMap();
+    const party = [
+        "Liberal",
+        "Conservative",
+        "New Democratic Party",
+        "Bloc Québécois",
+        "Others",
+    ];
 
     const infobox = feature;
 
@@ -29,39 +36,51 @@ const InfoControl = ({ feature }) => {
                                     ]
                                 }
                             </h4>
-                            <table>
+                            <table className="infobox-table">
                                 <tr>
                                     <th>
                                         Party
                                     </th>
                                     <th>
                                         Vote
-                                        Count
                                     </th>
                                     <th>
                                         Percentage
                                     </th>
                                 </tr>
-                                <tr>
-                                    <th>
-                                        Liberal
-                                    </th>
-                                    <td>
-                                        {
-                                            infobox[
-                                                "Liberal Votes"
-                                            ]
-                                        }
-                                    </td>
-                                    <td>
-                                        {
-                                            infobox[
-                                                "Liberal Votes Percentage"
-                                            ]
-                                        }
-                                        %
-                                    </td>
-                                </tr>
+                                {party.map(
+                                    (
+                                        p
+                                    ) => (
+                                        <tr
+                                            key={
+                                                p
+                                            }
+                                        >
+                                            <th>
+                                                {
+                                                    p
+                                                }
+                                            </th>
+                                            <td>
+                                                {
+                                                    infobox[
+                                                        `${p} Votes`
+                                                    ]
+                                                }
+                                            </td>
+                                            <td>
+                                                {
+                                                    infobox[
+                                                        `${p} Votes Percentage`
+                                                    ]
+                                                }
+
+                                                %
+                                            </td>
+                                        </tr>
+                                    )
+                                )}
                             </table>
                         </div>
                     ) : (

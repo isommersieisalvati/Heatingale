@@ -9,10 +9,19 @@ import results from "../assets/canadianelection/election_result.json";
 import "leaflet/dist/leaflet.css";
 import "./CanadianElection.css";
 import InfoBox from "./InfoBox";
+import Legend from "./Legend";
 
 const CanadianElection = () => {
     const [infobox, setInfobox] =
         useState(null);
+    const party = {
+        Liberal: "#ff5765",
+        Conservative: "#8a6fdf",
+        "New Democratic Party":
+            "#feb06a",
+        "Bloc Québécois": "#36d6e7",
+        Others: "#fb8da0",
+    };
 
     const getElectionResult = (
         fedCode
@@ -37,33 +46,8 @@ const CanadianElection = () => {
                 "Elected Candidate Party"
             ];
 
-        let fillColor;
-        if (
-            electionResult === "Liberal"
-        ) {
-            fillColor = "#ff5765"; // Party A color
-        } else if (
-            electionResult ===
-            "Conservative"
-        ) {
-            fillColor = "#8a6fdf"; // Party B color
-        } else if (
-            electionResult ===
-            "New Democratic Party"
-        ) {
-            fillColor = "#feb06a"; // Party C color
-        } else if (
-            electionResult ===
-            "Bloc Québécois"
-        ) {
-            fillColor = "#36d6e7";
-        } else if (
-            electionResult === "Others"
-        ) {
-            fillColor = "#fb8da0";
-        } else {
-            fillColor = "gray";
-        }
+        let fillColor =
+            party[electionResult];
 
         return {
             weight: 1,
@@ -112,6 +96,7 @@ const CanadianElection = () => {
                 <InfoBox
                     feature={infobox}
                 />
+                <Legend party={party} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
