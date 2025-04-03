@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import CanadianElection from "./components/CanadianElection";
 import Fandom from "./components/Fandom";
+import Footer from "./components/Footer";
 
 const App = () => {
     return (
@@ -19,7 +20,7 @@ const App = () => {
                     <Route
                         path="/"
                         element={
-                            <Home />
+                            <CanadianElection />
                         }
                     />
                     <Route
@@ -35,6 +36,7 @@ const App = () => {
                         }
                     />
                 </Routes>
+                <Footer />
             </div>
         </Router>
     );

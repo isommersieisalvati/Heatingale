@@ -37,57 +37,70 @@ const RaceBarChart = () => {
     return (
         <div className="racebarchart">
             <div className="racebarchart-title">
-                Race Bar Chart
+                Number of Fanworks by
+                Year (On AO3)
             </div>
-            <div className="racebarchart-tabs">
-                {charts.map((tab) => (
-                    <div
-                        className="racebarchart-tab"
-                        key={tab.id}
-                        id={tab.id}
-                        onClick={() => {
-                            handleTabClick(
-                                tab.id
-                            );
-                            console.log(
-                                tab.visualizationId
-                            );
-                        }}
-                    >
-                        {tab.title}
-                    </div>
-                ))}
-            </div>
-            {charts.map((chart) => {
-                if (
-                    chart.visualizationId ==
-                    selectedChart.visualizationId
-                ) {
-                    return (
-                        <div>
-                            <iframe
-                                src={`https://flo.uri.sh/visualisation/${chart.visualizationId}/embed`}
-                                title="Interactive or visual content"
-                                className="flourish-embed-iframe"
-                                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-                            ></iframe>
+            <div className="racebarchart-graph">
+                <div className="racebarchart-tabs">
+                    {charts.map(
+                        (tab) => (
+                            <button
+                                className={`racebarchart-tab ${
+                                    selectedChart.id ===
+                                    tab.id
+                                        ? "active"
+                                        : ""
+                                }`}
+                                key={
+                                    tab.id
+                                }
+                                id={
+                                    tab.id
+                                }
+                                onClick={() => {
+                                    handleTabClick(
+                                        tab.id
+                                    );
+                                }}
+                            >
+                                {
+                                    tab.title
+                                }
+                            </button>
+                        )
+                    )}
+                </div>
+                {charts.map((chart) => {
+                    if (
+                        chart.visualizationId ==
+                        selectedChart.visualizationId
+                    ) {
+                        return (
                             <div>
-                                <a
-                                    class="flourish-credit"
-                                    href={`https://public.flourish.studio/visualisation/${chart.visualizationId}/?utm_source=embed&utm_campaign=visualisation/${chart.visualizationId}`}
-                                    target="_top"
-                                >
-                                    <img
-                                        alt="Made with Flourish"
-                                        src="https://public.flourish.studio/resources/made_with_flourish.svg"
-                                    />
-                                </a>
+                                <iframe
+                                    src={`https://flo.uri.sh/visualisation/${chart.visualizationId}/embed`}
+                                    title="Interactive or visual content"
+                                    className="flourish-embed-iframe"
+                                    sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+                                ></iframe>
+                                <div>
+                                    <a
+                                        class="flourish-credit"
+                                        href={`https://public.flourish.studio/visualisation/${chart.visualizationId}/?utm_source=embed&utm_campaign=visualisation/${chart.visualizationId}`}
+                                        target="_top"
+                                    >
+                                        <img
+                                            alt="Made with Flourish"
+                                            src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                                        />
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    );
-                }
-                return null;
-            })}
+                        );
+                    }
+                    return null;
+                })}
+            </div>
         </div>
     );
 };

@@ -91,6 +91,15 @@ const InfoControl = ({ feature }) => {
                                 Federal
                                 Election
                             </h4>
+                            <p>
+                                Hover
+                                over a
+                                district
+                                to see
+                                detailed
+                                election
+                                results.
+                            </p>
                         </div>
                     )}
                 </div>

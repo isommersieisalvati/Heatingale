@@ -43,7 +43,10 @@ const Header = () => {
                             handleMouseLeave
                         }
                     >
-                        Canada
+                        <Link to="/canadian_politics">
+                            Canada
+                        </Link>
+
                         {openDropdown ===
                             "nav1" && (
                             <ul className="dropdown">
@@ -53,12 +56,12 @@ const Header = () => {
                                         Elections
                                     </a>
                                 </li>
-                                <li className="dropdown-item">
+                                {/* <li className="dropdown-item">
                                     <a href="/canadian_politics">
                                         BC
                                         Elections
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         )}
                     </li>
@@ -73,19 +76,19 @@ const Header = () => {
                             handleMouseLeave
                         }
                     >
-                        Fandom
-                        {openDropdown ===
+                        <Link to="/fandom">
+                            Fandom
+                        </Link>
+                        {/* {openDropdown ===
                             "nav2" && (
                             <ul className="dropdown">
                                 <li className="dropdown-item">
                                     <a href="/fandom">
-                                        Race
-                                        Bar
-                                        Chart
+                                        
                                     </a>
                                 </li>
                             </ul>
-                        )}
+                        )} */}
                     </li>
                 </ul>
             </nav>

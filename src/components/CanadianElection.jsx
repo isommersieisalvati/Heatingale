@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, {
+    useState,
+    useEffect,
+} from "react";
 import {
     MapContainer,
     TileLayer,
@@ -22,6 +25,11 @@ const CanadianElection = () => {
         "Bloc Québécois": "#36d6e7",
         Others: "#fb8da0",
     };
+
+    useEffect(() => {
+        document.title =
+            "Canadian Federal Election | Heatingale";
+    }, []);
 
     const getElectionResult = (
         fedCode
@@ -50,10 +58,11 @@ const CanadianElection = () => {
             party[electionResult];
 
         return {
-            weight: 1,
-            color: "black",
+            weight: 2,
+            dashArray: "3",
+            color: "white",
             fillColor,
-            fillOpacity: 0.6,
+            fillOpacity: 0.4,
         };
     };
 
@@ -78,8 +87,8 @@ const CanadianElection = () => {
     };
 
     return (
-        <>
-            <h2>
+        <div className="election">
+            <h2 className="election-title">
                 2021 Canadian Federal
                 Election
             </h2>
@@ -88,10 +97,7 @@ const CanadianElection = () => {
                     56.1304, -106.3468,
                 ]}
                 zoom={3}
-                style={{
-                    height: "500px",
-                    width: "700px",
-                }}
+                className="election-map"
             >
                 <InfoBox
                     feature={infobox}
@@ -109,7 +115,7 @@ const CanadianElection = () => {
                     }
                 />
             </MapContainer>
-        </>
+        </div>
     );
 };
 

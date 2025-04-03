@@ -4,6 +4,11 @@
     background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
+    font-size: 10px; /* Adjust font size as needed */
+    padding: 1px; /* Optional: add some padding */
+    margin: 1px;
+    position: sticky;
+    z-index: 500;
 }
 
 .infobox-title {

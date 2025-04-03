@@ -1,9 +1,16 @@
-import React from "react";
+import React, {
+    useEffect,
+} from "react";
 import RaceBarChart from "./RaceBarChart";
+import "./Fandom.css";
 
 const Fandom = () => {
+    useEffect(() => {
+        document.title =
+            "Fandom | Heatingale";
+    }, []);
     return (
-        <div>
+        <div className="fandom">
             <RaceBarChart />
         </div>
     );

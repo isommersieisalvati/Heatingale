@@ -6,21 +6,19 @@ a {
 }
 
 header {
-    display: flex; /* Aligns the column and row */
+    display: flex;
     justify-content: flex-start; /* Aligns the column and row at the start */
     align-items: center; /* Aligns the items at the top */
-    gap: 200px; /* Adds space between the column and the row */
-    padding: 10px 20px;
+    gap: 200px;
     background-color: white;
     box-shadow: 0 4px 6px
         rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: fixed;
-    margin-bottom: 10px;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensure the header stays above other components */
+    height: 80px;
+    margin-bottom: 15px;
 }
 
 .title {
@@ -28,6 +26,7 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    padding-left: 10px;
     gap: 5px;
 }
 
@@ -43,8 +42,8 @@ header {
 .heatingale-summary {
     font-family: serif;
     font-style: italic;
-    font-size: 0.9rem;
-    margin-bottom: 0;
+    font-size: 0.8rem;
+    margin: 0 0 0 0;
 }
 
 .nav {
@@ -114,8 +113,4 @@ header {
 
 .dropdown {
     display: none;
-}
-
-body {
-    margin-top: 100px;
 }
