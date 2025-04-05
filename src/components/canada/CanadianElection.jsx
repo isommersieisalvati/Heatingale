@@ -5,10 +5,13 @@ import React, {
 import {
     MapContainer,
     TileLayer,
+    Marker,
+    Circle,
+    Popup,
     GeoJSON,
 } from "react-leaflet";
-import districts from "../assets/canadianelection/districts.json";
-import results from "../assets/canadianelection/election_result.json";
+import districts from "../../assets/canadianelection/districts.json";
+import results from "../../assets/canadianelection/election_result.json";
 import "leaflet/dist/leaflet.css";
 import "./CanadianElection.css";
 import InfoBox from "./InfoBox";
