@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import CanadianElection from "./components/canada/CanadianElection";
 import Fandom from "./components/fandom/Fandom";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
     return (
@@ -34,6 +35,7 @@ const App = () => {
                 />
             </Routes>
             <Footer />
+            <Analytics />
         </Router>
     );
 };

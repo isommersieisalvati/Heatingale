@@ -13,30 +13,3 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-.election-map {
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
-    width: 700px;
-    height: 360px;
-    z-index: 1;
-}
-
-th {
-    color: #00008b;
-}
-
-.party {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.leaflet-touch .leaflet-control-layers,
-.leaflet-touch .leaflet-bar {
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0px 0px 5px
-        rgba(0, 0, 0, 0.2);
-    z-index: 500;
-}
