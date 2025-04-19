@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap");
+
+.federal-election-turnout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 80px 0;
+}
+
+.federal-election-turnout-title {
+    font-family: "Alegreya";
+    font-size: 2em;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.federal-election-turnout-radial {
+}
