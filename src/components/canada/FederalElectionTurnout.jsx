@@ -157,9 +157,9 @@ const FederalElectionTurnout = () => {
             .domain([min, avg, max])
             .interpolator(
                 d3.interpolateRgbBasis([
-                    "#0000FF",
+                    "#000080",
                     "#eeeeee",
-                    "#006400",
+                    "#1e570c",
                 ])
             );
 
@@ -263,15 +263,57 @@ const FederalElectionTurnout = () => {
             <div className="federal-election-turnout-text">
                 <div className="federal-election-turnout-title">
                     Federal Election
-                    Turnout (1867-2021)
+                    Voter Turnout <br />{" "}
+                    (1867-2021)
                 </div>
                 <div className="federal-election-turnout-summary">
-                    Average Voter
-                    Turnout: {avg}%
-                    Lowest Voter
-                    Turnout: {min}%
-                    Highest Voter
-                    Turnout: {max}%
+                    <div>
+                        <span className="label">
+                            Average:
+                        </span>{" "}
+                        {avg}%
+                    </div>
+                    <div>
+                        <span className="label">
+                            Lowest:
+                        </span>{" "}
+                        {min}% in 1898
+                    </div>
+                    <div>
+                        <span className="label">
+                            Highest:
+                        </span>{" "}
+                        {max}% in 1958
+                    </div>
+                </div>
+                <div className="federal-voter-turnout-note">
+                    * This voter turnout
+                    is calculated based
+                    on the ratio of
+                    total ballots cast
+                    and the number of
+                    electors on list.
+                    The voter turnout as
+                    percentage of total
+                    population is much
+                    lower, between 8% to
+                    52%.
+                </div>
+                <div className="federal-election-turnout-legend">
+                    <div className="federal-election-turnout-legend-item">
+                        <div className="federal-election-turnout-legend-color green" />
+                        <span className="federal-election-turnout-legend-text">
+                            Above
+                            Average
+                        </span>
+                    </div>
+                    <div className="federal-election-turnout-legend-item">
+                        <div className="federal-election-turnout-legend-color blue" />
+                        <span className="federal-election-turnout-legend-text">
+                            Below
+                            Average
+                        </span>
+                    </div>
                 </div>
             </div>
             <svg

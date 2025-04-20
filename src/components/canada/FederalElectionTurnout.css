@@ -3,9 +3,18 @@
 .federal-election-turnout {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: space-between;
     justify-content: center;
     margin: 80px 0;
+}
+
+.federal-election-turnout-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .federal-election-turnout-title {
@@ -16,5 +25,58 @@
     margin-bottom: 10px;
 }
 
+.federal-voter-turnout-note {
+    font-family: serif;
+}
+
+.federal-election-turnout-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: serif;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.federal-election-turnout-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.federal-election-turnout-legend-color {
+    width: 16px;
+    height: 16px;
+}
+
+.green {
+    background-color: #1e570c;
+}
+
+.blue {
+    background-color: #000080;
+}
+
+.federal-election-turnout-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: serif;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.federal-election-turnout-summary
+    .label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    color: #333;
+}
+
 .federal-election-turnout-radial {
+    width: 45%;
 }
