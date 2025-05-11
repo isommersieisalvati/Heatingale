@@ -5,6 +5,7 @@ import "./CanadianElection.css";
 import "./FederalElectionResult";
 import FederalElectionResult from "./FederalElectionResult";
 import FederalElectionTurnout from "./FederalElectionTurnout";
+import PollAndResult from "./PollAndResult";
 
 const CanadianElection = () => {
     useEffect(() => {
@@ -20,6 +21,7 @@ const CanadianElection = () => {
             </h2>
             <FederalElectionResult />
             <FederalElectionTurnout />
+            <PollAndResult/>
         </div>
     );
 };
