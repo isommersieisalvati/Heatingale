@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/blog/:path*",
-      "destination": "https://isommersieisalvati-github-io.vercel.app/:path*"
+      "destination": "https://isommersieisalvati-github-io.vercel.app/blog"
     }
   ]
 }
